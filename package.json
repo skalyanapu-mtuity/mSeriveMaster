@@ -1,0 +1,27 @@
+{
+  "name": "mServiceMaster-service",
+  "version": "0.0.1",
+  "author": "Saikiran Kalyanapu <kalyanapu.sai@gmail.com>",
+  "private": true,
+  "scripts": {
+    "start": "node mServiceMaster-service.js",
+    "debug": "node-debug mServiceMaster-service.js --debug-brk",
+    "test": "mocha specs --reporter spec",
+    "docker": "node scripts/docker.js"
+  },
+  "engines": {
+    "node": ">=6.2.1"
+  },
+  "dependencies": {
+"fwsp-config": "1.1.5",
+"hydra-express": "1.4.9",
+"fwsp-server-response": "2.2.6",
+"fwsp-jwt-auth": "0.1.0",
+"fwsp-logger": "0.3.0"  },
+  "devDependencies": {
+    "chai": "3.5.0",
+    "eslint": "3.16.0",
+    "mocha": "3.2.0",
+    "superagent": "3.5.2"
+  }
+}
