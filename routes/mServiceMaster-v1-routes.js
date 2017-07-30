@@ -13,15 +13,43 @@ let serverResponse = new ServerResponse();
 serverResponse.enableCORS(true);express.response.sendError = function(err) {
   serverResponse.sendServerError(this, {result: {error: err}});
 };
+
 express.response.sendOk = function(result) {
   serverResponse.sendOk(this, {result});
 };
 
-let api = express.Router();
+express.response.sendError = function(result) {
+  serverResponse.sendServerError(this, {result});
+};
 
-api.get('/', hydraExpress.validateJwtToken(),
+let api = express.Router();
+//hydraExpress.validateJwtToken()
+
+api.get('/',
 (req, res) => {
-  res.sendOk({greeting: 'Welcome to Hydra Express!'});
+  res.sendOk({msg: `hello from ${hydra.getServiceName()} - ${hydra.getInstanceID()}`});
 });
+
+
+api.get('/get-json/:id',
+  (req, res) => {
+    console.log(req.params.id,'params addede !!');
+    req.query.id = req.params.id;
+    let message = hydra.createUMFMessage({
+      to: 'mservice-service:[get]/v1/mService/fetch-json/',
+      from: 'mServiceMaster-service:/',
+      body: {
+        'id':req.params.id
+      }
+    });
+    return hydra.makeAPIRequest(message)
+      .then((response) => {
+        res.sendOk({msg:response});
+      })
+      .catch(err => {
+        res.sendError(err);
+      });
+  });
+
 
 module.exports = api;

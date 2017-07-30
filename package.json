@@ -4,7 +4,7 @@
   "author": "Saikiran Kalyanapu <kalyanapu.sai@gmail.com>",
   "private": true,
   "scripts": {
-    "start": "node mServiceMaster-service.js",
+    "start": "node mServiceMaster-service.js  --exec babel-node --presets es2015,stage-2",
     "debug": "node-debug mServiceMaster-service.js --debug-brk",
     "test": "mocha specs --reporter spec",
     "docker": "node scripts/docker.js"
@@ -17,11 +17,19 @@
 "hydra-express": "1.4.9",
 "fwsp-server-response": "2.2.6",
 "fwsp-jwt-auth": "0.1.0",
-"fwsp-logger": "0.3.0"  },
+"fwsp-logger": "0.3.0",
+    "babel-cli": "^6.11.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-2": "^6.11.0",
+    "babel-register": "^6.11.6"},
   "devDependencies": {
     "chai": "3.5.0",
     "eslint": "3.16.0",
     "mocha": "3.2.0",
-    "superagent": "3.5.2"
+    "superagent": "3.5.2",
+    "babel-cli": "^6.11.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-2": "^6.11.0",
+    "babel-register": "^6.11.6"
   }
 }
