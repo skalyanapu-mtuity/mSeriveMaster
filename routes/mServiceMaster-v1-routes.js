@@ -25,6 +25,9 @@ express.response.sendError = function(result) {
 let api = express.Router();
 //hydraExpress.validateJwtToken()
 
+
+
+
 api.get('/',
 (req, res) => {
   res.sendOk({msg: `hello from ${hydra.getServiceName()} - ${hydra.getInstanceID()}`});
